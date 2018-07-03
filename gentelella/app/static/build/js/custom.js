@@ -402,7 +402,7 @@ function init_flot_chart() {
 
     for (var i = 0; i < 30; i++) {
         chart_plot_02_data.push([
-            new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10
+            new Date(Date.today().add(i).days()).getTime(), randNum() + i + i +10
         ]);
     }
 
@@ -504,7 +504,8 @@ function init_flot_chart() {
             defaultTheme: false
         },
         yaxis: {
-            min: 0
+            min: 0,
+            max: 100
         },
         xaxis: {
             mode: "time",
@@ -555,7 +556,7 @@ function init_flot_chart() {
         console.log('Plot2');
 
         $.plot($("#chart_plot_02"), [{
-            label: "Email Sent",
+            label: "Risco Bacteria 1",
             data: chart_plot_02_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0.12)"
