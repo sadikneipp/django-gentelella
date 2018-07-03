@@ -402,7 +402,7 @@ function init_flot_chart() {
 
     for (var i = 0; i < 30; i++) {
         chart_plot_02_data.push([
-            new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10
+            new Date(Date.today().add(i).days()).getTime(), randNum() + i + i +10
         ]);
     }
 
@@ -530,7 +530,8 @@ function init_flot_chart() {
             defaultTheme: false
         },
         yaxis: {
-            min: 0
+            min: 0,
+            max: 100
         },
         xaxis: {
             mode: "time",
