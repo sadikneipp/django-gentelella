@@ -406,6 +406,32 @@ function init_flot_chart() {
         ]);
     }
 
+
+    var infection1_data = [];
+
+    for (var i = 0; i < 30; i++) {
+        infection1_data.push([
+            new Date(Date.today().add(i).days()).getTime() - 27*24*3600*1000, randNum() + i + i + 10
+        ]);
+    }
+
+    var infection2_data = [];
+
+    for (var i = 0; i < 30; i++) {
+        infection2_data.push([
+            new Date(Date.today().add(i).days()).getTime() - 27*24*3600*1000, (randNum() + i + i + 10)*0.5
+        ]);
+    }
+
+    var infection3_data = [];
+
+    for (var i = 0; i < 30; i++) {
+        infection3_data.push([
+            new Date(Date.today().add(i).days()).getTime() - 27*24*3600*1000, (randNum() + i + i + 10)*0.25
+        ]);
+    }
+
+
     var chart_plot_01_settings = {
         series: {
             lines: {
@@ -451,7 +477,7 @@ function init_flot_chart() {
         tooltip: true
     };
 
-    var chart_plot_02_settings = {
+    var infection_plot_01_settings = {
         grid: {
             show: true,
             aboveData: true,
@@ -511,8 +537,136 @@ function init_flot_chart() {
             mode: "time",
             minTickSize: [1, "day"],
             timeformat: "%d/%m/%y",
-            min: chart_plot_02_data[0][0],
-            max: chart_plot_02_data[20][0]
+            min: infection1_data[0][0],
+            max: infection1_data[20][0]
+        }
+    };
+
+    var infection_plot_02_settings = {
+        grid: {
+            show: true,
+            aboveData: true,
+            color: "#3f3f3f",
+            labelMargin: 10,
+            axisMargin: 0,
+            borderWidth: 0,
+            borderColor: null,
+            minBorderMargin: 5,
+            clickable: true,
+            hoverable: true,
+            autoHighlight: true,
+            mouseActiveRadius: 100
+        },
+        series: {
+            lines: {
+                show: true,
+                fill: true,
+                lineWidth: 2,
+                steps: false
+            },
+            points: {
+                show: true,
+                radius: 4.5,
+                symbol: "circle",
+                lineWidth: 3.0
+            }
+        },
+        legend: {
+            position: "ne",
+            margin: [0, -25],
+            noColumns: 0,
+            labelBoxBorderColor: null,
+            labelFormatter: function(label, series) {
+                return label + '&nbsp;&nbsp;';
+            },
+            width: 40,
+            height: 1
+        },
+        colors: ['#96CA59','#E89B9B', '#8686F7'],
+        shadowSize: 0,
+        tooltip: true,
+        tooltipOpts: {
+            content: "%s: %y.0",
+            xDateFormat: "%d/%m",
+            shifts: {
+                x: -30,
+                y: -50
+            },
+            defaultTheme: false
+        },
+        yaxis: {
+            min: 0
+        },
+        xaxis: {
+            mode: "time",
+            minTickSize: [1, "day"],
+            timeformat: "%d/%m/%y",
+            min: infection2_data[0][0],
+            max: infection2_data[20][0]
+        }
+    };
+
+    var infection_plot_03_settings = {
+        grid: {
+            show: true,
+            aboveData: true,
+            color: "#3f3f3f",
+            labelMargin: 10,
+            axisMargin: 0,
+            borderWidth: 0,
+            borderColor: null,
+            minBorderMargin: 5,
+            clickable: true,
+            hoverable: true,
+            autoHighlight: true,
+            mouseActiveRadius: 100
+        },
+        series: {
+            lines: {
+                show: true,
+                fill: true,
+                lineWidth: 2,
+                steps: false
+            },
+            points: {
+                show: true,
+                radius: 4.5,
+                symbol: "circle",
+                lineWidth: 3.0
+            }
+        },
+        legend: {
+            position: "ne",
+            margin: [0, -25],
+            noColumns: 0,
+            labelBoxBorderColor: null,
+            labelFormatter: function(label, series) {
+                return label + '&nbsp;&nbsp;';
+            },
+            width: 40,
+            height: 1
+        },
+        colors: ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'],
+        shadowSize: 0,
+        tooltip: true,
+        tooltipOpts: {
+            content: "%s: %y.0",
+            xDateFormat: "%d/%m",
+            shifts: {
+                x: -30,
+                y: -50
+            },
+            defaultTheme: false
+        },
+        yaxis: {
+            min: 0
+        },
+        xaxis: {
+            mode: "time",
+            minTickSize: [1, "day"],
+            timeformat: "%d/%m/%y",
+            min: infection3_data[0][0],
+            max: infection3_data[20][0]
         }
     };
 
@@ -539,7 +693,6 @@ function init_flot_chart() {
         }
     };
 
-
     if ($("#chart_plot_01").length) {
         console.log('Plot1 - testing...');
 
@@ -556,15 +709,43 @@ function init_flot_chart() {
         console.log('Plot2');
 
         $.plot($("#chart_plot_02"), [{
-            label: "Risco Bacteria 1",
-            data: chart_plot_02_data,
+            label: "Risco Bactéria 1",
+            data: infection1_data,
             lines: {
-                fillColor: "rgba(150, 202, 89, 0.12)"
+                fillColor: "rgba(150, 202, 89, 0)"
             },
             points: {
                 fillColor: "#fff"
             }
-        }], chart_plot_02_settings);
+        }
+        ,
+        
+        {
+            label: "Risco Bactéria 2",
+            data: infection2_data,
+            lines: {
+                fillColor: "rgba(150, 202, 89, 0)"
+            },
+            points: {
+                fillColor: "#fff"
+            }
+
+        }
+        ,
+        
+        {
+            label: "Risco Bactéria 3",
+            data: infection3_data,
+            lines: {
+                fillColor: "rgba(150, 202, 89, 0)"
+            },
+            points: {
+                fillColor: "#fff"
+            }
+
+        }
+        
+        ], infection_plot_02_settings);
 
     }
 
