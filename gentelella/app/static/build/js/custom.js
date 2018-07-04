@@ -721,7 +721,7 @@ function init_flot_chart() {
         ,
 
         {
-            label: "S. Vancomicina",
+            label: "S. aureus",
             data: infection2_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0)"
@@ -734,7 +734,7 @@ function init_flot_chart() {
         ,
 
         {
-            label: "E. Faecium",
+            label: "E. faecium",
             data: infection3_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0)"
