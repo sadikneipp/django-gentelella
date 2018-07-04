@@ -709,7 +709,7 @@ function init_flot_chart() {
         console.log('Plot2');
 
         $.plot($("#chart_plot_02"), [{
-            label: "Risco Bactéria 1",
+            label: "K. pneumoniae",
             data: infection1_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0)"
@@ -719,9 +719,9 @@ function init_flot_chart() {
             }
         }
         ,
-        
+
         {
-            label: "Risco Bactéria 2",
+            label: "S. Vancomicina",
             data: infection2_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0)"
@@ -732,9 +732,9 @@ function init_flot_chart() {
 
         }
         ,
-        
+
         {
-            label: "Risco Bactéria 3",
+            label: "E. Faecium",
             data: infection3_data,
             lines: {
                 fillColor: "rgba(150, 202, 89, 0)"
@@ -744,7 +744,7 @@ function init_flot_chart() {
             }
 
         }
-        
+
         ], infection_plot_02_settings);
 
     }
